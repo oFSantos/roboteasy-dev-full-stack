@@ -24,7 +24,7 @@ Criar uma **API REST + WebSockets** utilizando **C# (.NET)** ou **Java (Spring B
 ---
 
 ### **2️⃣ Frontend**
-Criar uma **aplicação web** utilizando **Vue.js, React ou outra stack de sua escolha** com três telas:
+Criar uma **aplicação web** utilizando **Vue.js** com três telas:
 - **Tela de Login**
   - Input de **usuário e senha**.
   - Botão para **cadastrar-se**.
