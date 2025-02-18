@@ -69,3 +69,9 @@ Criar um **Dockerfile e um docker-compose.yml** para subir a aplicação de form
 ✔ **Uso correto de WebSockets**  
 ✔ **Uso eficiente do banco de dados**  
 ✔ **Documentação clara para rodar a aplicação**  
+
+
+---
+
+## ** ⏳ Prazo **
+- **5** dias.
