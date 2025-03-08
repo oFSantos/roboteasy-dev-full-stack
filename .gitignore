@@ -1,0 +1,23 @@
+# Dotnet
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+*.suo
+*.nupkg
+*.snupkg
+*.user
+/logs/
+/appsettings.*
+
+# Node.js (Angular/Vue)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode
+.vscode/
+.idea/
