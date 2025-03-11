@@ -5,6 +5,7 @@ namespace ChatRoboteasy.Domain.Interfaces
     public interface IRepositorioUsuario
     {
         public Task<EntidadeUsuario> BuscarPorNomeAsync(string nomeUsuario);
-        public Task<bool> CadastrarUsuario (EntidadeUsuario usuario);
+        public Task AdicionarUsuarioAsync(EntidadeUsuario usuario);
+     
     }
 }
