@@ -97,11 +97,9 @@ class Program
             })
             .Build();
 
-        // ✅ CAPTURA MENSAGENS RECEBIDAS DO SIGNALR
         _hubConnection.On<string, string>("ReceberMensagem", async (remetente, mensagem) =>
         {
             Console.Write($"\n📩 MENSAGEM RECEBIDA: {remetente} -> {mensagem}");
-            //MensagemRecebido();
             _historicoMensagens.Add((remetente, mensagem, DateTime.UtcNow));
             ExibirHistorico();
         });
@@ -164,7 +162,6 @@ class Program
 
         bool continuarChat = true;
 
-        // ✅ Criamos uma Task separada para escutar o input do usuário
         Task.Run(async () =>
         {
             while (continuarChat)
@@ -181,9 +178,7 @@ class Program
                 try
                 {
                     await _hubConnection.InvokeAsync("EnviarMensagem", destinatario, mensagem);
-                    //_historicoMensagens.Add((_usuarioLogado, mensagem, DateTime.UtcNow));
-                    //await CarregarHistoricoMensagens(destinatario);
-                    //ExibirHistorico();
+
                 }
                 catch (Exception ex)
                 {
@@ -192,10 +187,9 @@ class Program
             }
         }).Wait();
 
-        // ✅ Enquanto isso, continuamos escutando mensagens recebidas do SignalR
         while (continuarChat)
         {
-            await Task.Delay(100); // Pequeno delay para não consumir CPU
+            await Task.Delay(100); 
         }
     }
 
