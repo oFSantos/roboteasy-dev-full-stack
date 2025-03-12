@@ -1,5 +1,6 @@
 ﻿using ChatRoboteasy.Config;
 using ChatRoboteasy.Domain.Interfaces;
+using ChatRoboteasy.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,13 +18,12 @@ public class AutenticationController : ControllerBase
     {
         _configuration = configuration;
         _usuarioRepository = usuarioRepository;
-        // _passwordHasher = passwordHasher;
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel login)
     {
-        // Busca o usuário pelo NomeUsuario (campo equivalente ao "Username")
+        // Busca o usuário pelo Username
         var usuario =  await _usuarioRepository.BuscarPorNomeAsync(login.Username);
         if (usuario == null)        
             return Unauthorized("Usuário não encontrado");
@@ -38,11 +38,9 @@ public class AutenticationController : ControllerBase
         var secretKey = jwtSettings["Secret"];
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
-        // Criação dos claims usando os dados do usuário
         var claims = new[]
         {
             new Claim(ClaimTypes.Name, usuario.NomeUsuario),
-            // Você pode adicionar outros claims, como ID, roles, etc.
         };
 
         // Configuração do token
@@ -63,9 +61,4 @@ public class AutenticationController : ControllerBase
     }
 }
 
-public class LoginModel
-{
-    // Mesmo que o campo no banco seja NomeUsuario, no login você pode usar "Username"
-    public string Username { get; set; }
-    public string Password { get; set; }
-}
+

@@ -2,26 +2,23 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ChatRoboteasy.Infrastructure.Data;
-using ChatRoboteasy.Domain.Interfaces; // Certifique-se de que este namespace contém o seu DbContext
+using ChatRoboteasy.Domain.Interfaces; 
 
 namespace ChatRoboteasy.Infrastructure.CrossCutting
 {
-    public static class ServiceCollectionExtensions
+    public static class DependencyRegister
     {
         public static IServiceCollection AddCrossCuttingServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Obtém a string de conexão definida no appsettings.json
+            
             var connectionString = configuration.GetConnectionString("PostgresSql");
-
-
-            // Configura o DbContext para usar PostgreSQL
+            
             services.AddDbContext<ChatRoboteasyContext>(options =>
                 options.UseNpgsql(connectionString));
-
+            services.AddScoped<IRepositorioMensagem, RepositorioMensagem>();
+            services.AddSignalR();
             services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
-            services.AddScoped<IAutenticationService, UsuarioService>();
-
-            // Aqui você pode registrar outros serviços crosscutting, como Logging, Caching, etc.
+            services.AddScoped<IAutenticationService, UsuarioService>();            
 
             return services;
         }

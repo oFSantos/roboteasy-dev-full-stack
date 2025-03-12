@@ -7,12 +7,12 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // Definição da segurança para o JWT
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Insira o token JWT no formato: Bearer {seu token}",
@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer"
     });
 
-    // Requisito de segurança: aplica o token a todas as operações (ou personalize conforme necessário)
+
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -70,22 +70,30 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseRouting();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-// ATENÇÃO: A ordem importa! O UseAuthentication deve vir antes do UseAuthorization.
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ChatRoboteasyContext>();
     dbContext.Database.Migrate();
 }
+
+//Adiciona endpoint chatHub
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); 
+    endpoints.MapHub<ChatHub>("/chatHub"); 
+});
 
 app.Run();

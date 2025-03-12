@@ -11,6 +11,7 @@ namespace ChatRoboteasy.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<EntidadeUsuario>()
                 .HasIndex(u => u.NomeUsuario)
                 .IsUnique();
