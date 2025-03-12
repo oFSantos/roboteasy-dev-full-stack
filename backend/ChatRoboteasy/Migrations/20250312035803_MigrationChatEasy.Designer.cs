@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChatRoboteasy.Migrations
 {
     [DbContext(typeof(ChatRoboteasyContext))]
-    [Migration("20250312030844_ChatRoboeasyMigration")]
-    partial class ChatRoboeasyMigration
+    [Migration("20250312035803_MigrationChatEasy")]
+    partial class MigrationChatEasy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace ChatRoboteasy.Migrations
 {
     /// <inheritdoc />
-    public partial class ChatRoboeasyMigration : Migration
+    public partial class MigrationChatEasy : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

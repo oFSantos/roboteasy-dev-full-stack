@@ -24,7 +24,6 @@ namespace ChatRoboteasy.Presentation.Controllers
         /// Não precisa de autenticação para criar conta
         /// </summary>
         /// 
-        [Authorize]
         [HttpPost("registrar")]
         public async Task<IActionResult> Registrar([FromBody] UsuarioDto requisicao)
         {

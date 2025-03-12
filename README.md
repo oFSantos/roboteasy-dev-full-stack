@@ -1,77 +1,18 @@
-# **📌 Desafio Técnico – Desenvolvedor Full Stack**
-## **Objetivo**
-Criar um **chat em tempo real** com autenticação de usuários, listagem de usuários disponíveis e trocas de mensagens.
+1 - Navegue pelo terminal do docker até o diretório do projeto "\roboteasy-dev-full-stack"
+2 - Executar o commando  "docker-compose up -d"
+3 - Com o container rodando, abra a solução da API em: ./backend/ChatRoboteasy
+4 - Execute a aplicação usando Http
+5 - Com o swagger aberto em: http://localhost:5042/swagger/index.html utilize a rota "/Usuario/registrar" para cadastrar dois usuarios
+(Não coloquei autenticação nessa rota pois como se trata de um cadastro de novos usuários para o chat, mas para as outras rotas é necessário autenticar)
+6 - Para testar o chat, vamos abrir 2 instâncias de do nosso "Front" em .\roboteasy-dev-full-stack\TesteChatRobotEasy\bin\Release\net8.0\TesteChatRobotEasy.exe
+7 - Acesse o chat com o usuário e senha criados no passo 5
+8 - Escolha o método de Listar usuários online ou Entrar no chat
+9 - Ao entrar no chat, digite o nome do usuário que está logado na outra instância para entrar no chat com ele
+10 - Envie mensagens
+11 - Para consultar no banco de dados postgres o histórico, basta acessar o pgadmin que subiu com nosso container em : http://localhost/login
+12 - Utilizar as credênciais: Login:admin@example.com  Pass:secretaryship
+13 - Adicione novo server: General tab: PostgreSQL
+14 - Connection Host: postgres
+15 - User: admin, Pass: secretaryship
+16 - Após connectar, utilizar a query tool no Database:DesafioRoboteasy e fazer o select: 'select * from "Mensagens"'
 
-## 📌 Como Participar
-1. **Fork** este repositório para a sua conta do GitHub.
-2. Desenvolva a solução no seu fork.
-3. Após finalizar, **abra um Pull Request (PR)** para este repositório.
-4. Aguarde o feedback da equipe.
-
-## **🎯 Requisitos do Desafio**
-
-### **1️⃣ Backend**
-Criar uma **API REST + WebSockets** utilizando **C# (.NET)** ou **Java (Spring Boot)** com as seguintes funcionalidades:
-- **Autenticação e Registro de Usuários**  
-  - Criar um endpoint para **login** e outro para **cadastro de usuários**.  
-  - Utilizar **JWT** para autenticação.  
-- **Listagem de Usuários Online**  
-  - Criar um endpoint que retorna os usuários conectados.  
-- **Mensagens em Tempo Real**  
-  - Implementar **WebSockets** para o envio e recebimento de mensagens.  
-  - Criar um **histórico de mensagens** (armazenar em MongoDB ou outro banco de sua escolha).  
-
----
-
-### **2️⃣ Frontend**
-Criar uma **aplicação web** utilizando **Vue.js** com três telas:
-- **Tela de Login**
-  - Input de **usuário e senha**.
-  - Botão para **cadastrar-se**.
-- **Tela de Usuários Disponíveis**
-  - Listagem dos usuários conectados.
-  - Clique no usuário para iniciar um chat.
-- **Tela de Conversa**
-  - Exibir **histórico de mensagens**.
-  - Permitir envio de mensagens em tempo real via **WebSockets**.
-
----
-
-### **3️⃣ Docker**
-Criar um **Dockerfile e um docker-compose.yml** para subir a aplicação de forma rápida.
-
-- O **backend** deve rodar no **.NET Core** ou **Spring Boot**.
-- O **frontend** deve rodar no Vue.js
-- Banco de dados pode ser **MongoDB, PostgreSQL ou outro**.
-- Criar um **arquivo README.md** com instruções para rodar o projeto.
-
----
-
-## **🛠 Tecnologias Sugeridas**
-### **Backend**
-✅ **C# com .NET Core** (ou) **Java 17+ com Spring Boot**  
-✅ **Autenticação com JWT**  
-✅ **WebSockets para mensagens em tempo real**  
-✅ **Banco de dados** (MongoDB, PostgreSQL, ou outro de sua escolha)  
-✅ **Docker para containerização**
-
-### **Frontend**
-✅ **Vue.js**  
-✅ **Consumo de APIs via Axios ou Fetch**  
-✅ **Uso de WebSockets para chat em tempo real**  
-
----
-
-## **📌 O que será avaliado?**
-✔ **Código bem estruturado e organizado**  
-✔ **Boas práticas de desenvolvimento** (Clean Code, SOLID, etc.)  
-✔ **Segurança na autenticação e API**  
-✔ **Uso correto de WebSockets**  
-✔ **Uso eficiente do banco de dados**  
-✔ **Documentação clara para rodar a aplicação**  
-
-
----
-
-## ** ⏳ Prazo **
-- **5** dias.
